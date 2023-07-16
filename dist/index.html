@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="../src/style.css">
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <div id="header">
+        <button id="measurement-button">°F/mph</button>
+        <form id="search-form">
+            <input id="location-search" type="search" placeholder="Search city">    
+        </form>
+        <p id="error" style="display: none">We couldn't find that location</p>
+    </div>
+    <h1 id="location"></h1>
+    <div id="today">
+        <h2 id="day"></h2>
+        <h2 id="condition"></h2>
+        <h2 id="temp"></h2>
+        <h2 id="min-temp"></h2>
+        <h2 id="max-temp"></h2>
+        <h2 id="rain"></h2>
+        <h2 id="wind"></h2>
+    </div>
+    <div id="forecast"></div>
+</body>
+</html>
