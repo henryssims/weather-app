@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: 'poppins', sans-serif;
+}
+
+body {
+    background-image: url('./bg.jpg');
+    background-size: cover;
+}
+
+#header {
+    display: flex;
+    height: 75px;
+    align-items: center;
+    gap: 50px;
+    padding: 20px;
+    padding-left: 40px;
+}
+
+#measurement-button {
+    width: 100px;
+    height: 60px;
+    border: 6px solid white;
+    background-color: transparent;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#measurement-button:hover {
+    background-color: white;
+    color: lightblue;
+}
+
+#measurement-button:active {
+    scale: 0.97;
+}
+
+#location-search {
+    width: 175px;
+    height: 50px;
+    border: none;
+    border-bottom: 3px solid white;
+    background-color: transparent;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-bottom: 0;
+    outline: none;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% {opacity: 1; }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% {opacity: 0; }
+}
+
+#error {
+    display: none;
+    animation: fadeIn 0.4s;
+    position: absolute;
+    margin-top: 10px;
+}
+
+#location {
+    text-align: center;
+    font-size: 50px;
+    margin-top: 0;
+}
+
+#today {
+    margin: auto;
+    margin-top: 30px;
+    border: 8px solid white;
+    border-radius: 10px;
+    width: 250px;
+    height: min-content;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#temp {
+    font-size: 100px;
+}
+
+#day,
+#condition {
+    font-size: 27px;
+}
+
+#min-temp,
+#max-temp,
+#rain,
+#wind {
+    font-size: 20px;
+}
+
+#forecast {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.forecast-day {
+    border: 8px solid white;
+    border-radius: 10px;
+    width: 150px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+.forecast-day > :nth-child(2) {
+    font-size: 50px;
+}
+
+.forecast-day > :nth-child(1),
+.forecast-day > :nth-child(3) {
+    font-size: 20px;
+    text-align: center;
+}
+
+.forecast-day > :nth-child(4),
+.forecast-day > :nth-child(5) {
+    font-size: 15px;
+}

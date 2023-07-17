@@ -34,26 +34,27 @@ function processWeather() {
             windMPH: weather.current.wind_mph,
             windKPH: weather.current.wind_kph,
             rain: weather.forecast.forecastday[0].day.daily_chance_of_rain,
-            tempC: weather.current.temp_c,
-            tempF: weather.current.temp_f,
-            maxTempC: weather.forecast.forecastday[0].day.maxtemp_c,
-            minTempC: weather.forecast.forecastday[0].day.mintemp_c,
-            maxTempF: weather.forecast.forecastday[0].day.maxtemp_f,
-            minTempF: weather.forecast.forecastday[0].day.mintemp_f
+            tempC: Math.floor(weather.current.temp_c),
+            tempF: Math.floor(weather.current.temp_f),
+            maxTempC: Math.floor(weather.forecast.forecastday[0].day.maxtemp_c),
+            minTempC: Math.floor(weather.forecast.forecastday[0].day.mintemp_c),
+            maxTempF: Math.floor(weather.forecast.forecastday[0].day.maxtemp_f),
+            minTempF: Math.floor(weather.forecast.forecastday[0].day.mintemp_f)
         }
         displayToday(weatherDataToday);
 
+        forecastDisplay.innerHTML = '';
         for (let i = 1; i < weather.forecast.forecastday.length; i++) {
             const currDay = weather.forecast.forecastday[i];
             const weatherDataFuture = {
                 day: currDay.date,
                 condition: currDay.day.condition.text,
-                tempC: currDay.day.avgtemp_c,
-                tempF: currDay.day.avgtemp_f,
-                maxTempC: currDay.day.maxtemp_c,
-                minTempC: currDay.day.mintemp_c,
-                maxTempF: currDay.day.maxtemp_f,
-                minTempF: currDay.day.mintemp_f,
+                tempC: Math.floor(currDay.day.avgtemp_c),
+                tempF: Math.floor(currDay.day.avgtemp_f),
+                maxTempC: Math.floor(currDay.day.maxtemp_c),
+                minTempC: Math.floor(currDay.day.mintemp_c),
+                maxTempF: Math.floor(currDay.day.maxtemp_f),
+                minTempF: Math.floor(currDay.day.mintemp_f),
                 rain: currDay.day.daily_chance_of_rain
             }
             displayFuture(weatherDataFuture);
@@ -75,17 +76,17 @@ function displayToday(weather) {
     conditionDisplay.textContent = weather.condition;
     dayDisplay.textContent = format(new Date(weather.day), 'eeee, MMMM d');
     if (measurement === "F") {
-        tempDisplay.textContent = `${weather.tempF} °F`;
-        minTempDisplay.textContent = `Low: ${weather.minTempF} °F`;
-        maxTempDisplay.textContent = `High: ${weather.maxTempF} °F`;
+        tempDisplay.textContent = `${weather.tempF}°F`;
+        minTempDisplay.textContent = `L: ${weather.minTempF}°F`;
+        maxTempDisplay.textContent = `H: ${weather.maxTempF}°F`;
         windDisplay.textContent = `Wind: ${weather.windMPH} mph`;
     } else {
-        tempDisplay.textContent = `${weather.tempC} °C`;
-        minTempDisplay.textContent = `Low: ${weather.minTempC} °C`;
-        maxTempDisplay.textContent = `High: ${weather.maxTempC} °C`;
+        tempDisplay.textContent = `${weather.tempC}°C`;
+        minTempDisplay.textContent = `L: ${weather.minTempC}°C`;
+        maxTempDisplay.textContent = `H: ${weather.maxTempC}°C`;
         windDisplay.textContent = `Wind: ${weather.windKPH} kph`;
     }
-    rainDisplay.textContent = `Rain: ${weather.rain} %`;
+    rainDisplay.textContent = `Rain: ${weather.rain}%`;
 }
 
 function displayFuture(weather) {
@@ -97,29 +98,25 @@ function displayFuture(weather) {
     const temp = document.createElement('h2');
     const minTemp = document.createElement('h2');
     const maxTemp = document.createElement('h2');
-    const rain = document.createElement('h2');
 
     day.textContent = format(new Date(weather.day + 'T00:00'), 'eeee');
     condition.textContent = weather.condition;
 
     if (measurement === 'F') {
-        temp.textContent = `${weather.tempF} °F`;    
-        minTemp.textContent = `Low: ${weather.minTempF} °F`;
-        maxTemp.textContent = `High: ${weather.maxTempF} °F`;
+        temp.textContent = `${weather.tempF}°F`;    
+        minTemp.textContent = `L: ${weather.minTempF}°F`;
+        maxTemp.textContent = `H: ${weather.maxTempF}°F`;
     } else {
-        temp.textContent = `${weather.tempC} °C`;    
-        minTemp.textContent = `Low: ${weather.minTempC} °C`;
-        maxTemp.textContent = `High: ${weather.maxTempC} °C`;
+        temp.textContent = `${weather.tempC}°C`;    
+        minTemp.textContent = `L: ${weather.minTempC}°C`;
+        maxTemp.textContent = `H: ${weather.maxTempC}°C`;
     }
     
-    rain.textContent = `Rain: ${weather.rain} %`;
-    
     module.appendChild(day);
-    module.appendChild(condition);
     module.appendChild(temp);
+    module.appendChild(condition);
     module.appendChild(minTemp);
     module.appendChild(maxTemp);
-    module.appendChild(rain);
     forecastDisplay.appendChild(module);
 }
 

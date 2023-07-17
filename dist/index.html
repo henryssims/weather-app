@@ -6,20 +6,23 @@
     <title>Weather</title>
     <link rel="stylesheet" href="../src/style.css">
     <script src="main.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="header">
         <button id="measurement-button">°F/mph</button>
         <form id="search-form">
             <input id="location-search" type="search" placeholder="Search city">    
+            <p id="error">We couldn't find that location</p>
         </form>
-        <p id="error" style="display: none">We couldn't find that location</p>
     </div>
     <h1 id="location"></h1>
     <div id="today">
         <h2 id="day"></h2>
-        <h2 id="condition"></h2>
         <h2 id="temp"></h2>
+        <h2 id="condition"></h2>
         <h2 id="min-temp"></h2>
         <h2 id="max-temp"></h2>
         <h2 id="rain"></h2>
